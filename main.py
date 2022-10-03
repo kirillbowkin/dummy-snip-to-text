@@ -12,5 +12,9 @@ cv2.namedWindow(window_name, cv2.WND_PROP_FULLSCREEN)
 cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 cv2.imshow(window_name, cv_img)
 
+x, y, w, h = cv2.selectROI(window_name, cv_img)
+
+crop_img = cv_img[y:y+h, x:x+w]
+
 cv2.waitKey()
 cv2.destroyAllWindows()
