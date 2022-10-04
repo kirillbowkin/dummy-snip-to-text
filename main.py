@@ -5,6 +5,7 @@ import numpy as np
 import cv2
 import click
 import time
+import torch
 
 @click.command()
 @click.option("--delay", "-d", default=0, help="delay in seconds")
@@ -29,7 +30,7 @@ def snip_to_text_command(delay):
 
     crop_img = cv_img[y:y+h, x:x+w]
 
-    reader = easyocr.Reader(["en", "ru"])
+    reader = easyocr.Reader(["en", "ru"], gpu=torch.cuda.is_available())
     text = '\n'.join(reader.readtext(crop_img, detail=0, paragraph=True))
 
     pyperclip.copy(text)
