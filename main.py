@@ -23,7 +23,6 @@ def snip_to_text_command(delay):
     window_name = "Screenshot"
     cv2.namedWindow(window_name, cv2.WND_PROP_FULLSCREEN)
     # cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-    cv2.imshow(window_name, cv_img)
     cv2.setWindowProperty(window_name, cv2.WND_PROP_TOPMOST, 1)
 
     x, y, w, h = cv2.selectROI(window_name, cv_img)
