@@ -1,3 +1,5 @@
+import pyperclip
+import easyocr
 import pyautogui
 import numpy as np
 import cv2
@@ -16,5 +18,10 @@ x, y, w, h = cv2.selectROI(window_name, cv_img)
 
 crop_img = cv_img[y:y+h, x:x+w]
 
-cv2.waitKey()
+reader = easyocr.Reader(["en", "ru"])
+text = '\n'.join(reader.readtext(crop_img, detail=0, paragraph=True))
+
+pyperclip.copy(text)
+
+print('Text has been copied to a clipboard')
 cv2.destroyAllWindows()
