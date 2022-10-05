@@ -14,7 +14,6 @@ def snip_to_text_command(delay):
     show_timer(delay)
     click.echo('starting snipping...')
     cv_img = get_screenshot()
-    # show_snipping_screen()
     img_area = get_selected_area(window_name, cv_img)
     text = get_text_from_img(img_area)
     pyperclip.copy(text)
